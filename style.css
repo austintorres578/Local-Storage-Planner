@@ -1,0 +1,138 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.date-form{
+    padding-top: 13px;
+}
+.date-container div{
+    display: flex;
+    justify-content: right;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    margin-right: 125px
+}
+.date-container div input{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 2px;
+    padding: 0px;
+    height: 20px;
+}
+.date-container div p{
+    color: #a18a72;
+    font-family: Arial, sans-serif;
+}
+.header-container{
+    position: relative;
+    background-color: #e1dacf;
+    height:75px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+.header-text{
+    position: absolute;
+    font-size: 75px;
+    top: 0%;
+    left: -5%;
+    font-weight: bold;
+    font-family: 'Bonheur Royale', cursive;
+    color: #a18a72;
+}
+.header-text p{
+    margin: 0px;
+}
+.sleep-time-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.wake-time-container p{
+    font-size: 25px;
+    color: #a18a72;
+    font-family: Arial, sans-serif;
+}
+.wake-time-container input{
+    width: 40vw;
+    margin-right: 15px;
+    height: 30px;
+}
+.bed-time-container p{
+    font-size: 25px;
+    margin-left: 15px;
+    color: #a18a72;
+    font-family: Arial, sans-serif;
+}
+.bed-time-container input{
+    width: 40vw;
+    height: 30px;
+    margin-left: 15px;
+}
+.list-body-container{
+    display: flex;
+    width: 83vw;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.list-image img{
+    height: 500px;
+    padding-left: 10vw;
+}
+.list-container input{
+    width: 300px;
+}
+.priorities-container p{
+    font-size: 25px;
+    color: #a18a72;
+}
+.priorities-container input{
+    height: 30px;
+    width: 39vw;
+    font-size: 20px;
+}
+.priorities-container ul{
+    list-style: none;
+    padding-left: 0px;
+}
+.priorities-container ul li{
+    display: flex;
+}
+.priorities-container ul li input{
+    width: 20px;
+}
+.priorities-container ul li p{
+    border-bottom: solid #a18a72;
+    width: 100%;
+    margin: 0px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+.to-do-list-container p{
+    font-size: 25px;
+    color: #a18a72;
+}
+.to-do-list-container ul{
+    list-style: none;
+    padding-left: 0px;
+}
+.to-do-list-container ul li{
+    display: flex;
+}
+.to-do-list-container ul li p{
+    border-bottom: solid #a18a72;
+    width: 100%;
+    margin: 0px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+.to-do-list-container ul li input{
+    width: 20px;
+}
+.to-do-list-container input{
+    height: 30px;
+    width: 39vw;
+    font-size: 20px;
+}
