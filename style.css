@@ -3,14 +3,17 @@ body{
     padding: 0px;
 }
 .date-form{
-    padding-top: 13px;
+    display: block;
 }
-.date-container div{
+.date-form-container{
     display: flex;
     justify-content: right;
     margin-bottom: 25px;
-    margin-top: 25px;
-    margin-right: 125px
+    padding-top:25px;
+}
+.date-container{
+    display: flex;
+    justify-content: right;
 }
 .date-container div input{
     margin-top: auto;
@@ -20,8 +23,41 @@ body{
     height: 20px;
 }
 .date-container div p{
+    margin-top: auto;
+    margin-bottom: auto;
     color: #a18a72;
     font-family: Arial, sans-serif;
+}
+.filled-date{
+    display: none;
+    justify-content: right;
+    margin-bottom: 25px;
+    padding-top: 25px;
+}
+.day-reset-btn-container{
+    margin-top: 20px;
+    margin-right: 150px;
+}
+.todays-date{
+    padding-left: 5px;
+    border-bottom: solid #a18a72;
+}
+.day-edit-btn{
+    margin-left: 5px;
+}
+.day-reset-btn{
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 30px;
+    margin-left: 5px;
+    background-color: red;
+    font-weight: bold;
+    color: white;
+    border: none;
+}
+.date-container div .filled-date{
+    display: none;
 }
 .header-container{
     position: relative;
@@ -49,6 +85,10 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
+.wake-time-container{
+   display: block;
+}
+
 .wake-time-container p{
     font-size: 25px;
     color: #a18a72;
@@ -58,6 +98,26 @@ body{
     width: 40vw;
     margin-right: 15px;
     height: 30px;
+    font-size: 20px;
+}
+.filled-wake-time-container{
+    display: none;
+}
+.filled-wake-time-header{
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    color: #a18a72;
+}
+.filled-wake-time{
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    color: #a18a72;
+    border-bottom: solid #a18a72;
+    width: 40vw;
+    
+}
+.bed-time-container{
+    display: block;
 }
 .bed-time-container p{
     font-size: 25px;
@@ -69,6 +129,23 @@ body{
     width: 40vw;
     height: 30px;
     margin-left: 15px;
+    font-size: 20px;
+}
+.filled-bed-time-container{
+    display: none;
+    margin-left: 15px;
+}
+.filled-bed-time-header{
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    color: #a18a72;
+}
+.filled-bed-time{
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    color: #a18a72;
+    border-bottom: solid #a18a72;
+    width: 40vw;
 }
 .list-body-container{
     display: flex;
@@ -85,6 +162,7 @@ body{
     width: 300px;
 }
 .priorities-container p{
+    font-family: Arial, sans-serif;
     font-size: 25px;
     color: #a18a72;
 }
@@ -111,6 +189,7 @@ body{
     padding-left: 5px;
 }
 .to-do-list-container p{
+    font-family: Arial, sans-serif;
     font-size: 25px;
     color: #a18a72;
 }
