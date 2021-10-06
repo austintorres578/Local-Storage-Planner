@@ -150,25 +150,27 @@ function priorityChecker(){
 }
 };
 
-
-
 function prioritiesLiMaker(Event){
     Event.preventDefault();
   
     let priorityItem = document.createElement("li")
-    let priorityCheck = document.createElement('input')
+    let priorityCheck = document.createElement('input');
     let priority = document.createElement('p');
-    let priorityEditBtn = document.createElement('btn');
+    let priorityEditBtn = document.createElement('button');
+    let priorityDeleteBtn = document.createElement('button');
 
     priorityItem;
     priorityCheck.type="checkbox";
     priority.innerText=prioritiesInput.value;
-    priorityEditBtn;
+    priorityEditBtn.innerHTML="Edit";
+    priorityDeleteBtn.innerHTML="Delete";
+    priorityDeleteBtn.className="priority-delete-btn";
 
     prioritiesList.appendChild(priorityItem);
     priorityItem.appendChild(priorityCheck);
     priorityItem.appendChild(priority);
     priorityItem.appendChild(priorityEditBtn);
+    priorityItem.appendChild(priorityDeleteBtn);
     
     prioritiesArray.push(prioritiesInput.value);
     localStorage.setItem("priorityItems",JSON.stringify(prioritiesArray));
@@ -180,17 +182,21 @@ function prioritiesCheckerLiMaker(item){
     let priorityItem = document.createElement("li")
     let priorityCheck = document.createElement('input')
     let priority = document.createElement('p');
-    let priorityEditBtn = document.createElement('btn');
+    let priorityEditBtn = document.createElement('button');
+    let priorityDeleteBtn = document.createElement('button');
 
     priorityItem;
     priorityCheck.type="checkbox";
     priority.innerText=item;
-    priorityEditBtn;
+    priorityEditBtn.innerHTML="Edit";
+    priorityDeleteBtn.innerHTML="Delete";
+    priorityDeleteBtn.className="priority-delete-btn";
 
     prioritiesList.appendChild(priorityItem);
     priorityItem.appendChild(priorityCheck);
     priorityItem.appendChild(priority);
     priorityItem.appendChild(priorityEditBtn);
+    priorityItem.appendChild(priorityDeleteBtn);
     
 };
 
@@ -217,17 +223,21 @@ function toDoListLiMaker(Event){
     let toDoItem = document.createElement("li")
     let toDoCheck = document.createElement('input')
     let toDo = document.createElement('p');
-    let toDoEditBtn = document.createElement('btn');
+    let toDoEditBtn = document.createElement('button');
+    let toDoDeleteBtn = document.createElement('button');
 
     toDoItem;
     toDoCheck.type="checkbox";
     toDo.innerText=toDoListInput.value;
-    toDoEditBtn;
+    toDoEditBtn.innerHTML="Edit";
+    toDoDeleteBtn.className="to-do-delete-btn"
+    toDoDeleteBtn.innerHTML="Delete";
 
     toDoList.appendChild(toDoItem);
     toDoItem.appendChild(toDoCheck);
     toDoItem.appendChild(toDo);
     toDoItem.appendChild(toDoEditBtn);
+    toDoItem.appendChild(toDoDeleteBtn);
 
     toDoArray.push(toDoListInput.value);
     localStorage.setItem("toDoItems",JSON.stringify(toDoArray));
@@ -248,17 +258,22 @@ function toDoCheckerLiMaker(item){
     let toDoItem = document.createElement("li")
     let toDoCheck = document.createElement('input')
     let toDo = document.createElement('p');
-    let toDoEditBtn = document.createElement('btn');
+    let toDoEditBtn = document.createElement('button');
+    let toDoDeleteBtn = document.createElement('button');
+    
 
     toDoItem;
     toDoCheck.type="checkbox";
     toDo.innerText=item;
-    toDoEditBtn;
+    toDoEditBtn.innerHTML="Edit";
+    toDoDeleteBtn.className="to-do-delete-btn"
+    toDoDeleteBtn.innerHTML="Delete";
 
     toDoList.appendChild(toDoItem);
     toDoItem.appendChild(toDoCheck);
     toDoItem.appendChild(toDo);
     toDoItem.appendChild(toDoEditBtn);
+    toDoItem.appendChild(toDoDeleteBtn);
     
 };
 

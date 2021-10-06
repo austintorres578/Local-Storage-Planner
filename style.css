@@ -116,6 +116,20 @@ body{
     width: 40vw;
     
 }
+.filled-wake-edit-btn{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.filled-wake-delete-btn{
+    background-color: red;
+    color: white;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border: none;
+}
+.filled-wake-delete-btn:hover{
+    background-color: darkred;
+}
 .bed-time-container{
     display: block;
 }
@@ -147,6 +161,21 @@ body{
     border-bottom: solid #a18a72;
     width: 40vw;
 }
+.filled-bed-edit-btn{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.filled-bed-delete-btn{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border: none;
+    background-color: red;
+    color: white;
+}
+.filled-bed-delete-btn:hover{
+    background-color: darkred;
+}
+
 .list-body-container{
     display: flex;
     width: 83vw;
@@ -166,10 +195,24 @@ body{
     font-size: 25px;
     color: #a18a72;
 }
+.priorities-container li{
+    margin-bottom: 5px;
+}
 .priorities-container input{
     height: 30px;
     width: 39vw;
     font-size: 20px;
+}
+.priority-item{
+    margin-bottom: 5px;
+}
+.priority-delete-btn{
+    background-color: red;
+    color: white;
+    border: none;
+}
+.priority-delete-btn:hover{
+    background-color: darkred;
 }
 .priorities-container ul{
     list-style: none;
@@ -199,6 +242,7 @@ body{
 }
 .to-do-list-container ul li{
     display: flex;
+    margin-bottom: 5px;
 }
 .to-do-list-container ul li p{
     border-bottom: solid #a18a72;
@@ -214,4 +258,13 @@ body{
     height: 30px;
     width: 39vw;
     font-size: 20px;
+}
+
+.to-do-delete-btn{
+    background-color: red;
+    border: none;
+    color: white;
+}
+.to-do-delete-btn:hover{
+    background-color: darkred;
 }
