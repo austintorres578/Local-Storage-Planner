@@ -26,12 +26,10 @@ function multipleOnloadEnabler(){
     toDoChecker();
 };
 
-
 function submitDate(Event){
     Event.preventDefault();
 
     writeDate(dateInput.value);
-
 };
 
 function dayReset(){
@@ -67,14 +65,18 @@ function editDate(){
  const wakeInput=document.getElementById('wake-input');
  const filledWakeTime=document.getElementById("filled-wake-time");
  const filledWakeTimeContainer=document.getElementById("filled-wake-time-container");
+ const filledWakeDeleteBtn = document.getElementById("filled-wake-delete-btn");
+ const filledWakeEditBtn = document.getElementById("filled-wake-edit-btn");
  let wakeInfo = JSON.parse(localStorage.getItem("wake"));
  let wakeArray= [];
 
  wakeForm.addEventListener("submit",writeWakeTime);
+ filledWakeDeleteBtn.addEventListener("click",deleteWakeTime);
+ filledWakeEditBtn.addEventListener("click",editWakeTime);
 
  function writeWakeTime(Event){
     Event.preventDefault();
-
+    wakeArray=[];
     filledWakeTime.innerText=wakeInput.value;
     wakeArray.push(wakeInput.value);
     localStorage.setItem("wake",JSON.stringify(wakeArray));
@@ -89,6 +91,23 @@ function editDate(){
         filledWakeTimeContainer.style.display="block";
     }
 };
+
+function deleteWakeTime(){
+    localStorage.removeItem("wake");
+    filledWakeTime.innerText="";
+    wakeTimeContainer.style.display="block";
+    filledWakeTimeContainer.style.display="none";
+
+};
+
+function editWakeTime(){
+    localStorage.removeItem("wake");
+    wakeInput.value=filledWakeTime.innerText;
+    filledWakeTime.innerText="";
+    wakeTimeContainer.style.display="block";
+    filledWakeTimeContainer.style.display="none";
+};
+
 //BED TIME
 
 const bedTimeContainer=document.getElementById("bed-time-container");
@@ -96,14 +115,19 @@ const bedForm=document.getElementById("bed-form");
 const bedInput=document.getElementById("bed-input");
 const filledBedTime=document.getElementById("filled-bed-time");
 const filledBedTimeContainer=document.getElementById("filled-bed-time-container");
+const filledBedDeleteBtn=document.getElementById("filled-bed-delete-btn");
+const filledBedEditBtn = document.getElementById("filled-bed-edit-btn");
 let bedInfo = JSON.parse(localStorage.getItem("bed"));
 let bedArray=[];
 
 bedForm.addEventListener("submit",writeBedTime);
+filledBedDeleteBtn.addEventListener("click",deleteBedTime);
+filledBedEditBtn.addEventListener("click",editBedTime);
 
 function writeBedTime(Event){
     Event.preventDefault();
 
+    bedArray=[];
     filledBedTime.innerText=bedInput.value;
     bedArray.push(bedInput.value);
     localStorage.setItem("bed",JSON.stringify(bedArray));
@@ -118,6 +142,22 @@ function bedChecker(){
         bedTimeContainer.style.display="none";
         filledBedTimeContainer.style.display="block";
     }
+};
+
+function deleteBedTime(){
+    localStorage.removeItem("bed");
+    filledBedTime.innerText="";
+    bedTimeContainer.style.display="block";
+    filledBedTimeContainer.style.display="none";
+    window.location.reload();
+};
+
+function editBedTime(){
+    localStorage.removeItem("bed");
+    bedInput.value=filledBedTime.innerText;
+    filledBedTime.innerText="";
+    bedTimeContainer.style.display="block";
+    filledBedTimeContainer.style.display="none";
 };
 
 //PRIORITIES LIST
@@ -154,6 +194,7 @@ function prioritiesLiMaker(Event){
     Event.preventDefault();
   
     let priorityItem = document.createElement("li")
+    priorityItem.id="parent-element"
     let priorityCheck = document.createElement('input');
     let priority = document.createElement('p');
     let priorityEditBtn = document.createElement('button');
@@ -165,6 +206,14 @@ function prioritiesLiMaker(Event){
     priorityEditBtn.innerHTML="Edit";
     priorityDeleteBtn.innerHTML="Delete";
     priorityDeleteBtn.className="priority-delete-btn";
+    priorityDeleteBtn.id="priority-delete-btn";
+    
+    priorityDeleteBtn.addEventListener("click",priorityDeleteBtnTest);
+
+    function priorityDeleteBtnTest(){
+        var parent=document.getElementById("parent-element");
+        parent.parentNode.removeChild(parent);
+    };
 
     prioritiesList.appendChild(priorityItem);
     priorityItem.appendChild(priorityCheck);
@@ -180,6 +229,7 @@ function prioritiesLiMaker(Event){
 
 function prioritiesCheckerLiMaker(item){
     let priorityItem = document.createElement("li")
+    priorityItem.id="parent-element"
     let priorityCheck = document.createElement('input')
     let priority = document.createElement('p');
     let priorityEditBtn = document.createElement('button');
@@ -191,6 +241,14 @@ function prioritiesCheckerLiMaker(item){
     priorityEditBtn.innerHTML="Edit";
     priorityDeleteBtn.innerHTML="Delete";
     priorityDeleteBtn.className="priority-delete-btn";
+    priorityDeleteBtn.id="priority-delete-btn";
+    
+    priorityDeleteBtn.addEventListener("click",priorityDeleteBtnTest);
+
+    function priorityDeleteBtnTest(){
+        var parent=document.getElementById("parent-element");
+        parent.parentNode.removeChild(parent);
+    };
 
     prioritiesList.appendChild(priorityItem);
     priorityItem.appendChild(priorityCheck);
@@ -274,6 +332,6 @@ function toDoCheckerLiMaker(item){
     toDoItem.appendChild(toDo);
     toDoItem.appendChild(toDoEditBtn);
     toDoItem.appendChild(toDoDeleteBtn);
-    
 };
+
 
