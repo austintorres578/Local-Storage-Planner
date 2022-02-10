@@ -165,8 +165,8 @@ function editBedTime(){
 const prioritiesList = document.getElementById("priorities-list");
 const prioritiesInputContainer = document.getElementById("priorities-input-container");
 const prioritiesInput = document.getElementById("priorities-input");
-let prioritiesArray = [];
 const prioritiesData = JSON.parse(localStorage.getItem('priorityItems'));
+let prioritiesArray = [];
 
 
 prioritiesInputContainer.addEventListener("submit", prioritiesLiMaker);
@@ -193,10 +193,12 @@ function priorityChecker(){
 function prioritiesLiMaker(Event){
     Event.preventDefault();
   
+    let priorityDeleteArray = [];
     let priorityItem = document.createElement("li")
-    priorityItem.id="parent-element"
+    priorityItem.id="parent-element";
     let priorityCheck = document.createElement('input');
     let priority = document.createElement('p');
+    priority.id = "priority-text";
     let priorityEditBtn = document.createElement('button');
     let priorityDeleteBtn = document.createElement('button');
 
@@ -210,9 +212,18 @@ function prioritiesLiMaker(Event){
     
     priorityDeleteBtn.addEventListener("click",priorityDeleteBtnTest);
 
-    function priorityDeleteBtnTest(){
-        var parent=document.getElementById("parent-element");
-        parent.parentNode.removeChild(parent);
+    function priorityDeleteBtnTest(event){
+        let x = event.target;
+        let xParent = x.parentNode;
+        xParent.parentNode.removeChild(xParent);
+        for (let i = 0; i < document.querySelectorAll("#priority-text").length; i++) {
+            priorityDeleteArray.push(document.querySelectorAll("#priority-text")[i].innerHTML);
+            
+        };
+        
+        prioritiesArray=priorityDeleteArray;
+        localStorage.setItem("priorityItems",JSON.stringify(prioritiesArray));
+        prioritiesArray=[];
     };
 
     prioritiesList.appendChild(priorityItem);
@@ -228,16 +239,20 @@ function prioritiesLiMaker(Event){
 };
 
 function prioritiesCheckerLiMaker(item){
+    let priorityDeleteArray = [];
     let priorityItem = document.createElement("li")
     priorityItem.id="parent-element"
     let priorityCheck = document.createElement('input')
     let priority = document.createElement('p');
+    priority.id = "priority-text";
+
     let priorityEditBtn = document.createElement('button');
     let priorityDeleteBtn = document.createElement('button');
 
     priorityItem;
     priorityCheck.type="checkbox";
     priority.innerText=item;
+
     priorityEditBtn.innerHTML="Edit";
     priorityDeleteBtn.innerHTML="Delete";
     priorityDeleteBtn.className="priority-delete-btn";
@@ -245,9 +260,18 @@ function prioritiesCheckerLiMaker(item){
     
     priorityDeleteBtn.addEventListener("click",priorityDeleteBtnTest);
 
-    function priorityDeleteBtnTest(){
-        var parent=document.getElementById("parent-element");
-        parent.parentNode.removeChild(parent);
+    function priorityDeleteBtnTest(event){
+        let x = event.target;
+        let xParent = x.parentNode;
+        xParent.parentNode.removeChild(xParent);
+        for (let i = 0; i < document.querySelectorAll("#priority-text").length; i++) {
+            priorityDeleteArray.push(document.querySelectorAll("#priority-text")[i].innerHTML);
+            
+        };
+        
+        prioritiesArray=priorityDeleteArray;
+        localStorage.setItem("priorityItems",JSON.stringify(prioritiesArray));
+        prioritiesArray=[];
     };
 
     prioritiesList.appendChild(priorityItem);
@@ -278,9 +302,11 @@ function toDoArrayFiller(){
 function toDoListLiMaker(Event){
     Event.preventDefault();
 
+    let toDoDeleteArray = [];
     let toDoItem = document.createElement("li")
     let toDoCheck = document.createElement('input')
     let toDo = document.createElement('p');
+    toDo.id = "to-do-text";
     let toDoEditBtn = document.createElement('button');
     let toDoDeleteBtn = document.createElement('button');
 
@@ -290,6 +316,22 @@ function toDoListLiMaker(Event){
     toDoEditBtn.innerHTML="Edit";
     toDoDeleteBtn.className="to-do-delete-btn"
     toDoDeleteBtn.innerHTML="Delete";
+
+    toDoDeleteBtn.addEventListener("click",toDoDeleteBtnTest);
+
+    function toDoDeleteBtnTest(event){
+        let x = event.target;
+        let xParent = x.parentNode;
+        console.log(xParent.children[1]);
+        xParent.parentNode.removeChild(xParent);
+        for (let i = 0; i < document.querySelectorAll("#to-do-text").length; i++){
+            toDoDeleteArray.push(document.querySelectorAll("#to-do-text")[i].innerHTML); 
+        };
+        
+        toDoArray=toDoDeleteArray;
+        localStorage.setItem("toDoItems",JSON.stringify(toDoArray));
+        toDoArray=[];
+    };
 
     toDoList.appendChild(toDoItem);
     toDoItem.appendChild(toDoCheck);
@@ -313,8 +355,10 @@ function toDoChecker(){
 };
 
 function toDoCheckerLiMaker(item){
-    let toDoItem = document.createElement("li")
-    let toDoCheck = document.createElement('input')
+    let toDoDeleteArray=[];
+
+    let toDoItem = document.createElement("li");
+    let toDoCheck = document.createElement('input');
     let toDo = document.createElement('p');
     let toDoEditBtn = document.createElement('button');
     let toDoDeleteBtn = document.createElement('button');
@@ -323,9 +367,26 @@ function toDoCheckerLiMaker(item){
     toDoItem;
     toDoCheck.type="checkbox";
     toDo.innerText=item;
+    toDo.id="to-do-text"
     toDoEditBtn.innerHTML="Edit";
     toDoDeleteBtn.className="to-do-delete-btn"
     toDoDeleteBtn.innerHTML="Delete";
+
+    toDoDeleteBtn.addEventListener("click", toDoDeleteBtnTest);
+
+    function toDoDeleteBtnTest(event){
+        let x = event.target;
+        let xParent = x.parentNode;
+        xParent.parentNode.removeChild(xParent);
+        for (let i = 0; i < document.querySelectorAll("#to-do-text").length; i++) {
+            toDoDeleteArray.push(document.querySelectorAll("#to-do-text")[i].innerHTML);
+            
+        };
+        
+        toDoArray=toDoDeleteArray;
+        localStorage.setItem("toDoItems",JSON.stringify(toDoArray));
+        toDoArray=[];
+    };
 
     toDoList.appendChild(toDoItem);
     toDoItem.appendChild(toDoCheck);
@@ -335,3 +396,4 @@ function toDoCheckerLiMaker(item){
 };
 
 
+//Work sheet

@@ -184,8 +184,9 @@ body{
     margin-right: auto;
 }
 .list-image img{
-    height: 500px;
+    height: 400px;
     padding-left: 10vw;
+    padding-bottom: 50px;
 }
 .list-container input{
     width: 300px;
