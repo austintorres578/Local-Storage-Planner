@@ -270,3 +270,15 @@ body{
     background-color: darkred;
 }
 
+#priorities-input{
+    display: block;
+}
+#to-do-list-input{
+    display: block;
+}
+#priorities-edit-input-container{
+    display: none;
+}
+#to-do-list-edit-input-container{
+    display: none;
+}

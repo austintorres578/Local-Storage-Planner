@@ -166,10 +166,13 @@ const prioritiesList = document.getElementById("priorities-list");
 const prioritiesInputContainer = document.getElementById("priorities-input-container");
 const prioritiesInput = document.getElementById("priorities-input");
 const prioritiesData = JSON.parse(localStorage.getItem('priorityItems'));
+const prioritiesEditInput = document.getElementById("priorities-edit-input-container");
 let prioritiesArray = [];
+let priorityEditBtnArray =[];
 
 
 prioritiesInputContainer.addEventListener("submit", prioritiesLiMaker);
+
 
 function priorityArrayFiller(){
     if(prioritiesData!==null){
@@ -206,6 +209,7 @@ function prioritiesLiMaker(Event){
     priorityCheck.type="checkbox";
     priority.innerText=prioritiesInput.value;
     priorityEditBtn.innerHTML="Edit";
+    priorityEditBtn.id="priority-edit-button";
     priorityDeleteBtn.innerHTML="Delete";
     priorityDeleteBtn.className="priority-delete-btn";
     priorityDeleteBtn.id="priority-delete-btn";
@@ -225,7 +229,49 @@ function prioritiesLiMaker(Event){
         localStorage.setItem("priorityItems",JSON.stringify(prioritiesArray));
         prioritiesArray=[];
     };
+    priorityEditBtn.addEventListener("click", priorityEditBtnTest);
 
+    function priorityEditBtnTest(event){
+        for (let i = 0; i < document.querySelectorAll("#priority-text").length; i++) {
+            priorityEditBtnArray.push(document.querySelectorAll("#priority-text")[i].innerHTML);
+            
+        };
+        let x = event.target;
+        let xParent = x.parentNode;
+        let editString = "edit";
+        console.log(xParent.children[1].innerHTML);
+        for (let i=0; i<priorityEditBtnArray.length; i++){
+            if(priorityEditBtnArray[i]===xParent.children[1].innerHTML){
+                priorityEditBtnArray[i]=editString;
+            };
+        };
+        console.log(priorityEditBtnArray);
+        prioritiesInputContainer.style.display="none";
+        prioritiesEditInput.style.display="block";
+        prioritiesEditInput.children[0].value=xParent.children[1].innerHTML;
+        prioritiesEditInput.children[0].placeholder=xParent.children[1].innerHTML;
+    
+        prioritiesEditInput.addEventListener("submit", prioritiesEditFormSubmit);
+
+        function prioritiesEditFormSubmit(event){
+            event.preventDefault();
+            for(let i=0; i < priorityEditBtnArray.length; i++){
+                if(priorityEditBtnArray[i]==editString){
+                    priorityEditBtnArray[i]=prioritiesEditInput.children[0].value;
+                    xParent.children[1].innerHTML=prioritiesEditInput.children[0].value;
+                    localStorage.setItem("priorityItems",JSON.stringify(priorityEditBtnArray));
+                    priorityEditBtnArray=[];
+                    location.reload();
+                };
+            };
+    
+            prioritiesEditInput.style.display="none";
+            prioritiesInputContainer.style.display="block";
+            prioritiesEditInput.children[0].value="";
+            prioritiesEditInput.children[0].value="";
+            prioritiesEditInput.children[0].placeholder="edit";
+        };  
+    };
     prioritiesList.appendChild(priorityItem);
     priorityItem.appendChild(priorityCheck);
     priorityItem.appendChild(priority);
@@ -254,6 +300,7 @@ function prioritiesCheckerLiMaker(item){
     priority.innerText=item;
 
     priorityEditBtn.innerHTML="Edit";
+    priorityEditBtn.id="priority-edit-button";
     priorityDeleteBtn.innerHTML="Delete";
     priorityDeleteBtn.className="priority-delete-btn";
     priorityDeleteBtn.id="priority-delete-btn";
@@ -274,6 +321,53 @@ function prioritiesCheckerLiMaker(item){
         prioritiesArray=[];
     };
 
+    priorityEditBtn.addEventListener("click", priorityEditBtnTest);
+
+    function priorityEditBtnTest(event){
+        for (let i = 0; i < document.querySelectorAll("#priority-text").length; i++) {
+            priorityEditBtnArray.push(document.querySelectorAll("#priority-text")[i].innerHTML);
+            
+        };
+        let x = event.target;
+        let xParent = x.parentNode;
+        let editString = "edit";
+        console.log(xParent.children[1].innerHTML);
+        for (let i=0; i<priorityEditBtnArray.length; i++){
+            if(priorityEditBtnArray[i]===xParent.children[1].innerHTML){
+                priorityEditBtnArray[i]=editString;
+            };
+        };
+        console.log(priorityEditBtnArray);
+        prioritiesInputContainer.style.display="none";
+        prioritiesEditInput.style.display="block";
+        prioritiesEditInput.children[0].value=xParent.children[1].innerHTML;
+        prioritiesEditInput.children[0].placeholder=xParent.children[1].innerHTML;
+    
+        prioritiesEditInput.addEventListener("submit", prioritiesEditFormSubmit);
+
+        function prioritiesEditFormSubmit(event){
+            event.preventDefault();
+            for(let i=0; i < priorityEditBtnArray.length; i++){
+                if(priorityEditBtnArray[i]==editString){
+                    priorityEditBtnArray[i]=prioritiesEditInput.children[0].value;
+                    xParent.children[1].innerHTML=prioritiesEditInput.children[0].value;
+                    prioritiesEditInput.children[0].value="";
+                    localStorage.setItem("priorityItems",JSON.stringify(priorityEditBtnArray));
+                    priorityEditBtnArray=[];
+                    location.reload();
+                };
+            };
+    
+            prioritiesEditInput.style.display="none";
+            prioritiesInputContainer.style.display="block";
+            prioritiesEditInput.children[0].value="";
+            prioritiesEditInput.children[0].value="";
+            prioritiesEditInput.children[0].placeholder="edit";
+        };  
+    
+    };
+
+
     prioritiesList.appendChild(priorityItem);
     priorityItem.appendChild(priorityCheck);
     priorityItem.appendChild(priority);
@@ -287,10 +381,14 @@ function prioritiesCheckerLiMaker(item){
 const toDoList = document.getElementById("to-do-list");
 const toDoListInputContainer = document.getElementById("to-do-list-input-container");
 const toDoListInput = document.getElementById("to-do-list-input");
+const toDoEditInput = document.getElementById("to-do-list-edit-input-container");
+let toDoEditBtnArray = [];
+
 let toDoArray = [];
 const toDoData = JSON.parse(localStorage.getItem("toDoItems"));
 
 toDoListInputContainer.addEventListener("submit", toDoListLiMaker);
+
 
 function toDoArrayFiller(){
     if(toDoData!==null){
@@ -314,6 +412,7 @@ function toDoListLiMaker(Event){
     toDoCheck.type="checkbox";
     toDo.innerText=toDoListInput.value;
     toDoEditBtn.innerHTML="Edit";
+    toDoEditBtn.id="to-do-edit-button"
     toDoDeleteBtn.className="to-do-delete-btn"
     toDoDeleteBtn.innerHTML="Delete";
 
@@ -322,15 +421,59 @@ function toDoListLiMaker(Event){
     function toDoDeleteBtnTest(event){
         let x = event.target;
         let xParent = x.parentNode;
-        console.log(xParent.children[1]);
         xParent.parentNode.removeChild(xParent);
-        for (let i = 0; i < document.querySelectorAll("#to-do-text").length; i++){
-            toDoDeleteArray.push(document.querySelectorAll("#to-do-text")[i].innerHTML); 
+        for (let i = 0; i < document.querySelectorAll("#to-do-text").length; i++) {
+            toDoDeleteArray.push(document.querySelectorAll("#to-do-text")[i].innerHTML);
+            
         };
         
         toDoArray=toDoDeleteArray;
         localStorage.setItem("toDoItems",JSON.stringify(toDoArray));
         toDoArray=[];
+    };
+
+    toDoEditBtn.addEventListener("click", toDoEditBtnTest);
+
+    function toDoEditBtnTest(event){
+        for (let i = 0; i < document.querySelectorAll("#to-do-text").length; i++) {
+            toDoEditBtnArray.push(document.querySelectorAll("#to-do-text")[i].innerHTML);
+            
+        };
+        let x = event.target;
+        let xParent = x.parentNode;
+        let editString = "edit";
+        console.log(xParent.children[1].innerHTML);
+        for (let i=0; i<toDoEditBtnArray.length; i++){
+            if(toDoEditBtnArray[i]===xParent.children[1].innerHTML){
+                toDoEditBtnArray[i]=editString;
+            };
+        };
+        console.log(toDoEditBtnArray);
+        toDoListInputContainer.style.display="none";
+        toDoEditInput.style.display="block";
+        toDoEditInput.children[0].value=xParent.children[1].innerHTML;
+        toDoEditInput.children[0].placeholder=xParent.children[1].innerHTML;
+    
+        toDoEditInput.addEventListener("submit", toDoEditFormSubmit);
+
+        function toDoEditFormSubmit(event){
+            event.preventDefault();
+            for(let i=0; i < toDoEditBtnArray.length; i++){
+                if(toDoEditBtnArray[i]==editString){
+                    toDoEditBtnArray[i]=toDoEditInput.children[0].value;
+                    xParent.children[1].innerHTML=toDoEditInput.children[0].value;
+                    localStorage.setItem("toDoItems",JSON.stringify(toDoEditBtnArray));
+                    toDoEditBtnArray=[];
+                    location.reload();
+                };
+            };
+    
+            toDoEditInput.style.display="none";
+            toDoListInputContainer.style.display="block";
+            toDoEditInput.children[0].value="";
+            toDoEditInput.children[0].value="";
+            toDoEditInput.children[0].placeholder="edit";
+        };  
     };
 
     toDoList.appendChild(toDoItem);
@@ -355,24 +498,27 @@ function toDoChecker(){
 };
 
 function toDoCheckerLiMaker(item){
-    let toDoDeleteArray=[];
-
-    let toDoItem = document.createElement("li");
-    let toDoCheck = document.createElement('input');
+    let toDoDeleteArray = [];
+    let toDoItem = document.createElement("li")
+    toDoItem.id="parent-element"
+    let toDoCheck = document.createElement('input')
     let toDo = document.createElement('p');
+    toDo.id = "to-do-text";
+
     let toDoEditBtn = document.createElement('button');
     let toDoDeleteBtn = document.createElement('button');
-    
 
     toDoItem;
     toDoCheck.type="checkbox";
     toDo.innerText=item;
-    toDo.id="to-do-text"
-    toDoEditBtn.innerHTML="Edit";
-    toDoDeleteBtn.className="to-do-delete-btn"
-    toDoDeleteBtn.innerHTML="Delete";
 
-    toDoDeleteBtn.addEventListener("click", toDoDeleteBtnTest);
+    toDoEditBtn.innerHTML="Edit";
+    toDoEditBtn.id="to-do-edit-button";
+    toDoDeleteBtn.innerHTML="Delete";
+    toDoDeleteBtn.className="to-do-delete-btn";
+    toDoDeleteBtn.id="to-do-delete-btn";
+    
+    toDoDeleteBtn.addEventListener("click",toDoDeleteBtnTest);
 
     function toDoDeleteBtnTest(event){
         let x = event.target;
@@ -385,15 +531,64 @@ function toDoCheckerLiMaker(item){
         
         toDoArray=toDoDeleteArray;
         localStorage.setItem("toDoItems",JSON.stringify(toDoArray));
-        toDoArray=[];
+        prioritiesArray=[];
     };
+
+    toDoEditBtn.addEventListener("click", toDoEditBtnTest);
+
+    function toDoEditBtnTest(event){
+        for (let i = 0; i < document.querySelectorAll("#to-do-text").length; i++) {
+            toDoEditBtnArray.push(document.querySelectorAll("#to-do-text")[i].innerHTML);
+            
+        };
+        let x = event.target;
+        let xParent = x.parentNode;
+        let editString = "edit";
+        console.log(xParent.children[1].innerHTML);
+        for (let i=0; i<toDoEditBtnArray.length; i++){
+            if(toDoEditBtnArray[i]===xParent.children[1].innerHTML){
+                toDoEditBtnArray[i]=editString;
+            };
+        };
+        console.log(toDoEditBtnArray);
+        toDoListInputContainer.style.display="none";
+        toDoEditInput.style.display="block";
+        toDoEditInput.children[0].value=xParent.children[1].innerHTML;
+        toDoEditInput.children[0].placeholder=xParent.children[1].innerHTML;
+    
+        toDoEditInput.addEventListener("submit", toDoEditFormSubmit);
+
+        function toDoEditFormSubmit(event){
+            event.preventDefault();
+            for(let i=0; i < toDoEditBtnArray.length; i++){
+                if(toDoEditBtnArray[i]==editString){
+                    toDoEditBtnArray[i]=toDoEditInput.children[0].value;
+                    xParent.children[1].innerHTML=toDoEditInput.children[0].value;
+                    toDoEditInput.children[0].value="";
+                    localStorage.setItem("toDoItems",JSON.stringify(toDoEditBtnArray));
+                    toDoEditBtnArray=[];
+                    location.reload();
+                };
+            };
+    
+            toDoEditInput.style.display="none";
+            toDoListInputContainer.style.display="block";
+            toDoEditInput.children[0].value="";
+            toDoEditInput.children[0].value="";
+            toDoEditInput.children[0].placeholder="edit";
+        };  
+    
+    };
+
 
     toDoList.appendChild(toDoItem);
     toDoItem.appendChild(toDoCheck);
     toDoItem.appendChild(toDo);
     toDoItem.appendChild(toDoEditBtn);
     toDoItem.appendChild(toDoDeleteBtn);
+    
 };
+
 
 
 //Work sheet
