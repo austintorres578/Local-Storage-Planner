@@ -2,12 +2,19 @@ body{
     margin: 0px;
     padding: 0px;
 }
+@media (max-width:768px){
+    html body .date-container{
+        justify-content: center;
+    }
+    html body .date-container .date-form-container{
+        padding-left: 125px;
+    }
+}
 .date-form{
     display: block;
 }
 .date-form-container{
     display: flex;
-    justify-content: right;
     margin-bottom: 25px;
     padding-top:25px;
 }
@@ -59,16 +66,23 @@ body{
 .date-container div .filled-date{
     display: none;
 }
+
 .header-container{
-    position: relative;
     background-color: #e1dacf;
     height:75px;
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+@media(max-width:440px){
+    .header-container .header-text{
+        font-size: 50px;
+    }
 }
 .header-text{
-    position: absolute;
+    text-align: center;
     font-size: 75px;
+    margin-left: auto;
+    margin-right: auto;
     top: 0%;
     left: -5%;
     font-weight: bold;
@@ -77,6 +91,35 @@ body{
 }
 .header-text p{
     margin: 0px;
+}
+@media (max-width:650px){
+    html body .sleep-time-container{
+        display: block;
+        justify-content: center;
+        text-align: center;
+    }
+    html body .sleep-time-container .wake-time-container #wake-form input{
+        width: 60vw;
+        margin-right: 0px;
+    }
+    html body .sleep-time-container .bed-time-container #bed-form input{
+        margin-left: 0px;
+        width: 60vw;
+    }
+    #parent-element{
+        justify-content: center;
+    }
+    #priority-text{
+        width: 50vw;
+    }
+    .filled-wake-time{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .filled-bed-time{
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 .sleep-time-container{
     display: flex;
@@ -175,13 +218,39 @@ body{
 .filled-bed-delete-btn:hover{
     background-color: darkred;
 }
+@media(max-width:650px){
+    html body .list-body-container{
+        display: block;
+        justify-content: center;
+        text-align: center;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .list-body-container .list-container .priorities-container p{
+        text-align: center;
+    }
+    .list-body-container .list-container .priorities-container #priorities-input-container #priorities-input{
+        margin-left: auto;
+        margin-right: auto;
+        width: 60vw;
+    }
+    .list-body-container .list-container .to-do-list-container #to-do-list-input-container #to-do-list-input{
+        margin-left: auto;
+        margin-right: auto;
+        width: 60vw;
+    }
+    #parent-element{
+        justify-content: center;
+    }
+    #to-do-text{
+        width: 50vw;
+    }
+}
 
 .list-body-container{
     display: flex;
-    width: 83vw;
     margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 55px;
 }
 .list-image img{
     height: 400px;
